@@ -26,3 +26,8 @@ A file with unpaid accounts and its members can be exported.
 The current member base will be imported by ods/csv.
 
 "Mahnstatus" will be tracked.
+
+#### Security
+
+Simple user accounts with username and passwords. Every user can access all features.
+When not logged in, redirect to login page.
