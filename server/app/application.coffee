@@ -9,6 +9,9 @@ fs = require 'fs'
 clientPublic = path.normalize __dirname + '/../../client/public'
 
 express = require 'express'
+bodyParser = require 'body-parser'
+cookieParser = require 'cookie-parser'
+expressSession = require 'express-session'
 
 # config = require '../server_config'
 mediator = require './mediator'
@@ -26,20 +29,14 @@ Project = mongoose.model 'Member', require('./schemas/Member'), 'members'
 
 # Server config
 
-app.configure ->
-	app.use express.bodyParser()
-	app.use express.methodOverride()
-	app.use express.cookieParser 'ponies'
-	app.use express.session()
-	# app.use log4js.connectLogger log4js.getLogger 'my-project-access'
-	app.use express.static clientPublic
-	app.use app.router
+app.use bodyParser()
+app.use cookieParser 'ponies'
+app.use expressSession()
+# app.use log4js.connectLogger log4js.getLogger 'my-project-access'
+app.use express.static clientPublic
 
-app.configure 'development', ->
-	app.use express.errorHandler {dumpExceptions: true, showStack:true }
 
-app.configure 'production', ->
-	app.use express.errorHandler()
+# app.use express.errorHandler {dumpExceptions: true, showStack:true }
 
 # admin routers
 # ModelRouter = require './routers/Model'
