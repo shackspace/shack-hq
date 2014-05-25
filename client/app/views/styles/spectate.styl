@@ -1,0 +1,186 @@
+@import 'nib'
+
+team1-color = #F12B03
+team2-color = #39B
+team1-color-highlight = #910
+team2-color-highlight = #3364BB
+
+#spectate
+	font-family 'commodore'
+	color rgba(255,255,255,0.9)
+	#question
+		position absolute
+		width 100%
+		font-size 2em
+		top 1%
+		text-align center
+
+		h1
+			padding 20px 50px 0
+			margin 0
+			line-height 0.8em
+
+	#answers
+		
+		position absolute
+		width 60%
+		left 20%
+		top 4.5em
+		font-size 3em
+		tr
+			
+			td
+				// visibility hidden
+				padding 0
+				border-top none
+
+			// &.answered td
+			// 	visibility inherit
+
+		.table-striped > tbody > tr:nth-child(odd) > td
+			background-color rgba(255,255,255,0.5)
+
+		.numberOfPeople
+			width 2em
+			text-align right
+
+	#strikes
+		position absolute
+		width 100%
+		bottom 2%
+		
+
+		.strike
+			font-size 12em
+			line-height 1em
+			&.on
+				color #F00
+
+	#question, #answers, #strikes
+		display none
+
+	&.phase-face-off, &.phase-team, &.phase-team-steal, &.phase-round-won
+		#question, #answers, #strikes
+			display block
+
+
+	// &.phase-face-off
+	#title
+		width 100%
+		text-align center
+		font-size 5em
+		font-weight bold
+
+	.background
+		z-index -1
+		position absolute
+		top 0
+		height 100%
+		width 100%
+		overflow hidden
+	#teams
+		.points
+			font-size 5em
+			line-height 0
+		height 100%
+		.row
+			height 100%			
+		.team-one
+			.bg
+				position absolute
+				background-color team1-color
+				z-index 100
+				width 200%
+				height 200%
+				bottom 0
+				left -50%
+				-webkit-transform rotate(-90deg)
+				-webkit-transform-origin 50% 100%
+			.info
+				z-index 1001
+				position absolute
+				bottom 2em
+				left 2em
+
+			&.turn
+				.bg
+					background-color team1-color-highlight
+
+
+		.team-two
+			.bg
+				position absolute
+				background-color team2-color
+				width 100%
+				height 100%
+				bottom 0
+				right 0
+			.info
+				text-align right
+				z-index 1001
+				position absolute
+				bottom 2em
+				right 2em
+
+			&.turn
+				.bg
+					background-color team2-color-highlight
+
+	&.phase-team, &.phase-round-won
+		#teams
+			.team-one
+				&.turn
+					.bg
+						-webkit-transform rotate(-20deg)
+						animation-duration 3s
+						animation-name gotTurn
+
+				&.noTurn
+					.bg
+						-webkit-transform rotate(-160deg)
+						animation-duration 3s
+						animation-name lostTurn
+
+	&.phase-team-steal
+		#teams
+			.team-one
+				&.turn
+					.bg
+						-webkit-transform rotate(-20deg)
+						animation-duration 3s
+						animation-name stoleTurn
+
+				&.noTurn
+					.bg
+						-webkit-transform rotate(-160deg)
+						animation-duration 3s
+						animation-name turnStolen
+
+	// 	display none
+
+	// .team-two
+	// 	display none
+
+@keyframes gotTurn
+	from
+		-webkit-transform rotate(-90deg)
+	to
+		-webkit-transform rotate(-20deg)
+
+@keyframes lostTurn
+	from
+		-webkit-transform rotate(-90deg)
+	to
+		-webkit-transform rotate(-160deg)
+
+@keyframes stoleTurn
+	from
+		-webkit-transform rotate(-160deg)
+	to
+		-webkit-transform rotate(-20deg)
+
+@keyframes turnStolen
+	from
+		-webkit-transform rotate(-20deg)
+	to
+		-webkit-transform rotate(-160deg)
