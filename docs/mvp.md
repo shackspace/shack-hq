@@ -20,7 +20,7 @@ Membership fees are subtracted automatically from the fees account every month.
 
 A file with unpaid accounts and its members can be exported.
 
-The current member base will be imported by ods/csv.
+The current member base will be imported by ods/csv (see member-migration.md).
 
 "Mahnstatus" will be tracked.
 
@@ -28,7 +28,3 @@ The current member base will be imported by ods/csv.
 
 Simple user accounts with username and passwords. Every user can access all features.
 When not logged in, redirect to login page.
-
-### ods import structure
-
-id	name	vorname	eintritt	austritt	schritflich_gekuendigt	kuendigung_bestaetigt	email	ML_m	ML_m-a	ML_key	MLsub	beitragsart	beitragsart_text	zahlweise	zahlweise_text	ls_aktiv	reliable	beitrag	mahn	mahnbetrag	mahn1datum	mahn2datum	mahn3datum	mahndeadline	mahnstatus	blz	konto	kontoinhaber	strasse	plz	ort	geburtsdatum	geschlecht	telefon	nickname
