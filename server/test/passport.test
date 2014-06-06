@@ -1,0 +1,5 @@
+run server
+(add user)
+try with:
+curl --data 'username=admin&password=secret' http://localhost:9000/login --noproxy localhost
+should be Accepted else Forbidden
