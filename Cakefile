@@ -8,6 +8,8 @@ npm = cmd 'npm'
 brunch = cmd 'brunch'
 forever = cmd 'forever'
 nodemon = cmd 'nodemon'
+inspector = cmd 'node-inspector'
+chrome = cmd 'chromium-browser'
 
 assertDependencies = (globals, components, cb) ->
 	done = 0
@@ -59,4 +61,15 @@ task 'watch', 'Launch application (development mode)', -> assertDependencies ['b
 		# Delay start of server to prevent annoying auto-reloads.
 		unless server?
 			server = spawn nodemon, ['--watch', 'app', '--ext', 'js,coffee', 'bin/server.js'], {cwd: 'server', stdio: 'inherit'}
+		process.stdout.write data
+
+task 'debug', 'Launch application (development mode)', -> assertDependencies ['brunch', 'nodemon'], ['client', 'server'], ->
+	client = spawn brunch, ['watch'], {cwd: 'client', stdio: [process.stdin, 'pipe', process.stderr] }
+	server = null
+	client.stdout.on 'data', (data) ->
+		# Delay start of server to prevent annoying auto-reloads.
+		unless server?
+			server = spawn nodemon, ['--debug', '--watch', 'app', '--ext', 'js,coffee', 'bin/server.js'], {cwd: 'server', stdio: 'inherit'}
+			debugOp = spawn inspector
+			browser = spawn chrome, ['--proxy-auto-detect', 'http://127.0.0.1:8080/debug?port=5858']
 		process.stdout.write data
