@@ -26,7 +26,7 @@ mongoose = require 'mongoose'
 mongoose.connect 'mongodb://localhost/shack-hq'
 global.mongoose = mongoose
 
-Project = mongoose.model 'Member', require('./schemas/Member'), 'members'
+Project = mongoose.model 'member', require('./schemas/Member'), 'members'
 User = mongoose.model 'User', require('./schemas/User'), 'users'
 
 # Server config
@@ -91,7 +91,7 @@ server = app.listen 9000, ->
 
 io = require('socket.io').listen server
 mediator.init io
-
+memberController = new (require './controllers/Member')
 # game = new (require './controllers/Game')
 
 # io.sockets.on 'message', (msg) ->

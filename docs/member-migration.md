@@ -38,3 +38,5 @@ Existing members have to be imported from the old system, an ods spreadsheet wit
 - geschlecht
 - telefon
 - nickname
+
+mandatsreferenz: SHACKEVBEITRAGXXXX
