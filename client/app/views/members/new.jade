@@ -7,11 +7,11 @@
 		.form-group
 			label.control-label.col-md-2 Name
 			.col-md-2
-				input.form-control(type='text', placeholder='Vorname')
+				input.form-control(type='text', name='firstName', placeholder='Vorname')
 			.col-md-2
-				input.form-control(type='text', placeholder='Nickname')
+				input.form-control(type='text', name='nickname', placeholder='Nickname')
 			.col-md-2
-				input.form-control(type='text', placeholder='Nachname')
+				input.form-control(type='text', name='name', placeholder='Nachname')
 
 		.form-group
 			label.control-label.col-md-2 Geschlecht
@@ -25,24 +25,24 @@
 		.form-group
 			label.control-label.col-md-2 Email
 			.col-md-6
-				input.form-control(type='email', placeholder='Email')
+				input.form-control(type='email', name='email', placeholder='Email')
 		.form-group
 			label.control-label.col-md-2 Geburtstag
 			.col-md-6
-				input.form-control(type='text', placeholder='YYYY-MM-DD')
+				input.form-control(type='text', name='birthdate', placeholder='YYYY-MM-DD')
 		.form-group
 			label.control-label.col-md-2 Telefon
 			.col-md-6
-				input.form-control(type='text', placeholder='Telefonnummer')
+				input.form-control(type='text', name='phone', placeholder='Telefonnummer')
 		.form-group
 			label.control-label.col-md-2 Addresse
 			.col-md-6
-				input.form-control(type='text', placeholder='Straße')
+				input.form-control(type='text', name='address.street', placeholder='Straße')
 		.form-group
 			.col-md-1.col-md-offset-2
-				input.form-control(type='text', placeholder='PLZ')
+				input.form-control(type='text', name='address.zip', placeholder='PLZ')
 			.col-md-5
-				input.form-control(type='text', placeholder='Stadt')
+				input.form-control(type='text', name='address.city', placeholder='Stadt')
 
 		hr
 		h4 Bankkram
@@ -51,42 +51,45 @@
 			label.control-label.col-md-2 Ermäßigt
 			.col-md-10
 				label.radio-inline
-					input(type='radio', name='reduced', value='false', checked=true)
+					input(type='radio', name='feeInformation.reduced', value='false', checked=true)
 					| Nein
 				label.radio-inline
-					input(type='radio', name='reduced', value='true')
+					input(type='radio', name='feeInformation.reduced', value='true')
 					| Ja
 			label.control-label.col-md-2 Interval
 			.col-md-10
 				label.radio-inline
-					input(type='radio', name='paymentInterval', value='monthly', checked=true)
+					input(type='radio', name='feeInformation.paymentInterval', value='monthly', checked=true)
 					| Monatlich
 				label.radio-inline
-					input(type='radio', name='paymentInterval', value='yearly')
+					input(type='radio', name='feeInformation.paymentInterval', value='yearly')
 					| Jährlich
 		.form-group
 			label.control-label.col-md-2 Zahlungsart
 			.col-md-10
 				label.radio-inline
-					input(type='radio', name='paymentMethod', value='lastschrift', checked=true)
+					input(type='radio', name='feeInformation.paymentMethod', value='lastschrift', checked=true)
 					| Lastschrift
 				label.radio-inline
-					input(type='radio', name='paymentMethod', value='überweisung')
+					input(type='radio', name='feeInformation.paymentMethod', value='überweisung')
 					| Überweisung
 
 		.form-group
 			label.control-label.col-md-2 Beitrag
 			.col-md-2
 				.input-group
-					input.form-control(type='text', placeholder='', style='text-align: right')
+					input.form-control(type='text', name='feeInformation.fee', placeholder='', style='text-align: right')
 					span.input-group-addon €
 
 		.form-group
 			label.control-label.col-md-2 Bankdaten
-			.col-md-4
-				input.form-control(type='text', placeholder='Kontonummer / IBAN')
+			.col-md-4.com-md-offset-2
+				input.form-control(type='text', name='bankingInformation.holder', placeholder='Inhaber')
+		.form-group
+			.col-md-4.col-md-offset-2
+				input.form-control(type='text', name='bankingInformation.iban', placeholder='Kontonummer / IBAN')
 			.col-md-2
-				input.form-control(type='text', placeholder='BLZ / BIC')
+				input.form-control(type='text', name='bankingInformation.bic', placeholder='BLZ / BIC')
 
 		hr
 		h4 Mailinglisten
@@ -94,22 +97,22 @@
 		.form-group
 			label.control-label.col-md-2 Mitglieder
 			.col-md-6
-				input.form-control(type='email', placeholder='mitglied@example.de')
+				input.form-control(type='email', name='mailinglists.members', placeholder='mitglied@example.de')
 
 		.form-group
 			label.control-label.col-md-2 Mitglieder-Announce
 			.col-md-6
-				input.form-control(type='email', placeholder='announce@example.de')
+				input.form-control(type='email', name='mailinglists.announce', placeholder='announce@example.de')
 
 		.form-group
 			label.control-label.col-md-2 Keymember
 			.col-md-6
-				input.form-control(type='email', placeholder='key@example.de')
+				input.form-control(type='email', name='mailinglists.key', placeholder='key@example.de')
 
 		hr
 		h4 Eintrittsdatum
 		.form-group
 			label.control-label.col-md-2 Eintrittsdatum
 			.col-md-6
-				input.form-control(type='text', placeholder='erster tag des monats')
+				input.form-control(type='text', name='joined', placeholder='erster tag des monats')
 
