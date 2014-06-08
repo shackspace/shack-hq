@@ -12,3 +12,9 @@ module.exports = class HeaderView extends View
 		super
 		@subscribeEvent 'loginStatus', @render
 		@subscribeEvent 'startupController', @render
+
+	getTemplateData: =>
+		data = super
+		data.user =
+			username: 'DER USER'
+		return data
