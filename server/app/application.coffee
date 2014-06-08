@@ -1,5 +1,5 @@
 log4js = require 'log4js'
-logger = log4js.getLogger 'cfd'
+logger = log4js.getLogger 'shack-hq'
 logger.setLevel if process.isTest then 'FATAL' else 'INFO'
 
 path = require 'path'

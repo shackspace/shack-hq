@@ -1,5 +1,8 @@
 # Abstract Crud Controller
 # extend and supply @model and @prefix
+util = require 'util'
+log4js = require 'log4js'
+log = log4js.getLogger 'crud-controller'
 
 mediator = require '../mediator'
 
@@ -18,28 +21,28 @@ module.exports = class CrudController
 		projection = args[1] or {}
 		options = args[2] or {}
 		@model.find query, projection, options, (err, users) ->
-			console.log err if err?
+			log.error err if err?
 			cb err, users
 
 	item: (id, cb) =>
 		@model.findById id, (err, user) ->
-			console.log err if err?
+			log.error err if err?
 			cb err, user
 
 	add: (rawItem, cb) =>
 		item = new @model rawItem
 		item.save (err) ->
-			console.log err if err?
-			cb err, item.toObject()
+			log.error err if err?
+			cb err.toString(), item.toObject()
 
 	delete: (id, cb) =>
 		@model.remove {_id: id}, (err) ->
-			console.log err if err?
+			log.error err if err?
 			cb err
 	
 	update: (item, cb) =>
 		id = item._id
 		delete item._id
 		@model.update {_id: id}, item, (err) ->
-			console.log err if err?
+			log.error err if err?
 			cb err

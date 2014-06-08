@@ -39,6 +39,6 @@ module.exports.NewMemberView = class NewMemberView extends View
 				members: @$('[name="mailinglists.members"]').val()
 				announce: @$('[name="mailinglists.announce"]').val()
 				key: @$('[name="mailinglists.key"]').val()
-			
-		console.log data
+
+		@trigger 'new', data
 		return false

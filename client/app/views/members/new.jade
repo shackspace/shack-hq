@@ -1,5 +1,5 @@
 .container
-	h1 NEW MEMBER
+	h1 Neues Mitglied anlegen
 	form.form-horizontal(role='form')
 		hr
 		h4 Persönliche Daten
@@ -108,14 +108,15 @@
 			label.control-label.col-md-2 Keymember
 			.col-md-6
 				input.form-control(type='email', name='mailinglists.key', placeholder='key@example.de')
-
 		hr
 		h4 Eintrittsdatum
 		.form-group
 			label.control-label.col-md-2 Eintrittsdatum
 			.col-md-6
-				input.form-control(type='text', name='joined', placeholder='erster tag des monats')
+				- var startOfMonth = moment().startOf('month').format('YYYY-MM-DD')
+				input.form-control(type='text', name='joined', value=startOfMonth)
 		hr
 		.form-group
 			.col-md-10.col-md-offset-2
 				button.btn.btn-primary(type='submit') Erstellen
+
