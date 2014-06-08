@@ -10,7 +10,7 @@ schema = new Schema
 	email: String
 	birthdate: Date
 	phone: String
-	
+	joined: Date
 	address:
 		street: String
 		zip: String
@@ -29,6 +29,10 @@ schema = new Schema
 		bic: String
 		mandatsreferenz: String # Vollautomatisch bauen?
 
+	mailinglists:
+		members: String
+		announce: String
+		key: String
 # - beitragsart monatlich/jährlich voll/ermäßigt
 # - beitragsart_text 
 # - zahlweise lastschrift/überweisung
