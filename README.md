@@ -1,3 +1,5 @@
+migrated to new location: https://codeberg.org/shackspace/shack-hq
+
 # shack-hq
 
 Automatic Government System For Your Favorite Hackerspace. Frees You From The Burden Of Money And Administration.
